@@ -1,0 +1,143 @@
+// This comments out a whole line
+// Number of spaces, tabs, line breaks etc. doesn't matter
+// $-sign indicate an element and all following words are fields in that element
+
+// Use replacement colors in image files to get player specific colors.
+// Example: (white)
+//		Red		(0xFF0000) -> (0xFCFEFC) Brightest
+//      Green	(0x00FF00) -> (0xC4DAF3)
+//      Blue	(0x0000FF) -> (0x69A4AC)
+//      Cyan	(0x00FFFF) -> (0x567E7B)
+//      Yellow	(0xFFFF00) -> (0x2C6170) Darkest
+
+// Plot tiles, 1 row and as many columns as there are variations.
+// Must be 64 x 64 pixels.
+
+$tiles-plain	tiles_plain.png
+$tiles-desert 	tiles_desert.png
+$tiles-shop		tiles_shop.png
+$tiles-river	tiles_river.png
+$tiles-crater	tiles_crater.png
+
+// Tile collision boxes
+// There should be one collision box for each tile variation
+// Position (x,y) relative to top left corner of the tile image
+// <x> <y> <width> <height>
+
+$tiles-river-collision
+8 0 44 64
+8 0 44 64
+8 0 44 64
+8 0 44 64
+8 0 44 64
+
+// Decals with collision rectangles
+// <decal type> <image file> <width> <height>
+
+$decals-mountain 	decals_mountains.png 32 32
+$decals-water 		decals_water.png 56 50
+$decals-small-water decals_small_water.png 40 24
+$decals-dirt 		decals_dirt.png 24 8
+
+// Decal collision boxes 
+// Position (x,y) relative to top left corner of the decal image
+// <x> <y> <width> <height>
+
+$decals-mountain-collision 
+1 8 24 21
+1 5 27 22
+0 8 26 19
+
+$decals-water-collision 
+2 1 49 21
+2 1 46 24
+5 3 33 42
+5 5 46 36
+
+$decals-small-water-collision 
+6 6 21 12
+
+// Factory image file, 4 rows and 5 columns.
+// Rows: crystal, metal, food, energy
+// Columns: Yield potential 0, 1, 2, 3, 4
+// Positions (x,y) offset from top left corder of a tile
+
+$factories factories.png
+$factory-pos 21 27
+
+// Factory highlight image, 4 columns
+// Drawn over a factory when it is selected.
+// Does not include the yield potential.
+// Position offset from top left corder of a tile
+
+$factory-highlights factory_highlights.png
+$factory-highlight-pos 48 27
+
+// Factory low energy image, 2 rows and 4 colums.
+// One column for each factory type
+// First row is no energy
+// Second row is half energy.
+
+$factory-low-energy factory_low_energy.png
+$factory-low-energy-pos 48 27
+
+// Production bit image
+// Bits counting up in the production
+// 8 positions (x,y) offsets from top left corder of a tile
+
+$production-bit production_bit.png
+$production-bit-pos 
+6 50
+13 50
+6 39
+13 39
+6 28
+13 28
+6 17
+13 17
+
+// Image when a factory produces nothing
+// This can happen randomly even if a factory is powered
+// Positions (x,y) offset from top left corder of a tile
+
+$production-none production_none.png
+$production-none-pos 5 50
+
+// Crystite amount image, 1 row 5 columns
+// Crystite amount 0, 1, 2, 3, 4
+// Position offset from top left corner of a tile
+
+$crystite-amounts assay_signs.png
+$crystite-amount-pos 46 5
+
+// Plot border.
+// Should be 64x64 pixels.
+
+$plot-border plot_border.png
+
+// Border images (NOT USED)
+// Corners: 12 columns - 4 straight corners, 4 closing corners, 4 opening corners
+// Left-Right: 2 columns - left and right border
+// Top-Bottom: 2 columns - top and bottom border
+
+$border-corners border_corners.png
+$border-left-right border_left_right.png
+$border-top-bottom border_top_bottom.png
+
+// Claim effect
+// Scaled and faded image when a user claims a tile.
+
+$claim-effect claim_effect.png
+
+// Shows which plot is up for auction 64x64 pixels.
+// Blinks before the auction starts.
+
+$land-auction-frame land_auction_frame.png
+
+// The land grant marker.
+// Can be any size but plots are 64x64 pixels.
+// Shows which plot is currently up for grabs.
+// Position offset from top left corner of a tile
+
+$land-grant-frame land_grant_frame.png
+$land-grant-frame-offset 0 0

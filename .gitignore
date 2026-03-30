@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.superpowers/
+reference/squashfs-root/
+reference/decompiled/
+reference/squashfs-root/
+reference/decompiled/
+reference/planetmule.AppImage
+reference/screenshot-*

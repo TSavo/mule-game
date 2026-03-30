@@ -1,0 +1,24 @@
+{
+  "name": "@mule-game/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@colyseus/schema": "4.0.19",
+    "@colyseus/sdk": "0.17.35",
+    "@mule-game/server": "workspace:*",
+    "@mule-game/shared": "workspace:*",
+    "phaser": "^3.87.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

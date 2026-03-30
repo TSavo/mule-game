@@ -1,0 +1,12 @@
+{
+  "name": "mule-game",
+  "private": true,
+  "scripts": {
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
