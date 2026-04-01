@@ -365,10 +365,17 @@ export class MapScene extends Phaser.Scene {
       return;
     }
 
-    // SPACE ends turn
+    // SPACE: install MULE if carrying one on an owned tile, otherwise end turn
     if (Phaser.Input.Keyboard.JustDown(this.keySpace)) {
-      this.sound.play("sfx_count");
-      this.gameClient.endTurn();
+      if (this.avatar.carrying) {
+        const { row, col } = this.avatar.getTile(MAP_OFFSET_X, MAP_OFFSET_Y, TILE_WIDTH, TILE_HEIGHT);
+        this.gameClient.installMule(row, col);
+        this.sound.play("sfx_build");
+        this.avatar.dropMule();
+      } else {
+        this.sound.play("sfx_count");
+        this.gameClient.endTurn();
+      }
     }
   }
 
