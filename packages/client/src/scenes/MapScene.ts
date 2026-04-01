@@ -690,6 +690,36 @@ export class MapScene extends Phaser.Scene {
     }
   }
 
+  // --------------- MULE run-away animation ---------------
+
+  private playMuleRunAway(): void {
+    // Create a temporary MULE sprite that runs off the right side of the screen
+    const muleX = this.avatar.getX();
+    const muleY = this.avatar.getY();
+    this.avatar.dropMule(); // remove from avatar
+
+    const key = this.textures.exists("mule_sprite") ? "mule_sprite" : null;
+    const runaway = key
+      ? this.add.sprite(muleX, muleY, key, 9).setDisplaySize(32, 40).setDepth(50)
+      : this.add.rectangle(muleX, muleY, 16, 16, 0xffd700).setDepth(50);
+
+    // Play walk-east animation if sprite
+    if (key && runaway instanceof Phaser.GameObjects.Sprite) {
+      runaway.play("mule_walk_east");
+    }
+
+    // Tween: run off right side of screen
+    this.tweens.add({
+      targets: runaway,
+      x: 1100,
+      duration: 1500,
+      ease: "Quad.easeIn",
+      onComplete: () => runaway.destroy(),
+    });
+
+    this.sound.play("sfx_robo_mule1");
+  }
+
   // --------------- Phase transitions ---------------
 
   private onPhaseChanged(phase: string): void {
@@ -716,6 +746,11 @@ export class MapScene extends Phaser.Scene {
     this.hud.update({
       phase: labels[phase] ?? phase.toUpperCase().replace("_", " "),
     });
+
+    // If leaving development while carrying a MULE — it runs away!
+    if (this.currentPhase !== "development" && this.avatar.carrying) {
+      this.playMuleRunAway();
+    }
 
     // Avatar only visible during development
     const showAvatar = phase === "development";

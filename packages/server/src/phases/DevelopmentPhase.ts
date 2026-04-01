@@ -139,11 +139,10 @@ export class DevelopmentPhase {
   endTurn(state: GameState, round: number): boolean {
     const player = state.players.get(String(this.playerOrder[this.currentIndex]));
     if (player) {
-      // If still carrying a MULE when turn ends, it runs away — returned to store
+      // If still carrying a MULE when turn ends, it runs away — lost forever
       if (player.hasMule) {
         player.hasMule = false;
         player.muleOutfit = "";
-        state.store.muleCount = Math.min(state.store.muleCount + 1, 14);
       }
       player.turnComplete = true;
     }
