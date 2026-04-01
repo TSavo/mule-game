@@ -1,11 +1,15 @@
 import "@tsmetadata/polyfill";
 
+import path from "path";
+import { fileURLToPath } from "url";
 import express from "express";
 import http from "http";
 import { Server } from "@colyseus/core";
 import { WebSocketTransport } from "@colyseus/ws-transport";
 import { GameRoom } from "./rooms/GameRoom.js";
 import { LobbyRoom } from "./rooms/LobbyRoom.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 app.use((_req, res, next) => {
@@ -17,6 +21,10 @@ app.use((_req, res, next) => {
   if (_req.method === "OPTIONS") { res.sendStatus(204); return; }
   next();
 });
+
+// Serve built client from ../client/dist
+const clientDist = path.resolve(__dirname, "../../client/dist");
+app.use(express.static(clientDist));
 
 const server = http.createServer(app);
 

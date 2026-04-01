@@ -79,7 +79,7 @@ export class MapScene extends Phaser.Scene {
 
     // Tile map
     this.tileRenderer = new TileRenderer(this);
-    this.cursorGraphics = this.add.graphics();
+    this.cursorGraphics = this.add.graphics().setDepth(100);
     this.wampusGraphics = this.add.graphics();
 
     // HUD
@@ -231,6 +231,13 @@ export class MapScene extends Phaser.Scene {
       (visible: boolean, row: number, col: number) =>
         this.updateWampus(visible, row, col),
     );
+
+    // Check initial phase and launch overlay if needed (e.g. coming from LobbyScene during intro)
+    const initialState = this.stateSync.getState();
+    const initialPhase = initialState?.phase ?? "";
+    if (initialPhase) {
+      this.onPhaseChanged(initialPhase);
+    }
   }
 
   update(_time: number, delta: number): void {

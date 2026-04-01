@@ -74,7 +74,7 @@ export class LobbyScene extends Phaser.Scene {
     // Scene transition from update loop — works reliably unlike async callbacks
     if (this.pendingTransition) {
       this.pendingTransition = false;
-      this.scene.start("IntroScene");
+      this.scene.start("MapScene");
     }
   }
 
