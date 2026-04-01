@@ -90,18 +90,7 @@ export class TownView {
       label.setOrigin(0.5, 0.5);
       this.container.add(label);
 
-      const keyText = scene.add.text(
-        bld.x,
-        bld.y + bld.h / 2 + 14,
-        `[${bld.key}]`,
-        {
-          fontFamily: "monospace",
-          fontSize: "11px",
-          color: "#aaaaaa",
-        },
-      );
-      keyText.setOrigin(0.5, 0.5);
-      this.container.add(keyText);
+      // No keyboard shortcut labels — walk into buildings to interact (matches Java)
     }
 
     // Store MULE image next to the corral building
@@ -119,7 +108,7 @@ export class TownView {
     const help = scene.add.text(
       GAME_WIDTH / 2,
       GAME_HEIGHT - 30,
-      "Arrow keys to move | Walk into building or press key | ESC = back to map",
+      "Arrow keys to move | Walk into a building to interact | ESC = back to map",
       {
         fontFamily: "monospace",
         fontSize: "12px",

@@ -345,16 +345,8 @@ export class MapScene extends Phaser.Scene {
       this.handleTownAction(overlapAction);
     }
 
-    // Check keyboard shortcuts for town buildings
-    const pressedKey = this.getPressedTownKey();
-    if (pressedKey) {
-      const keyAction = this.townView.checkKeyAction(pressedKey);
-      if (keyAction) {
-        this.handleTownAction(keyAction);
-      }
-    }
-
-    // ESC exits town view
+    // Walk into buildings only — no keyboard shortcuts (matches Java)
+    // ESC exits town view back to map
     if (Phaser.Input.Keyboard.JustDown(this.keyEsc)) {
       this.exitTownView();
     }
